@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eee9ff">
+  <title>Ninaivugal — Remember What Matters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">♡</span><span>Ninaivugal<small>remember with love</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-link active" data-page="home"><span>⌂</span> Overview</button>
+      <button class="nav-link" data-page="dates"><span>▦</span> Special dates</button>
+      <button class="nav-link" data-page="schedule"><span>◷</span> My schedule</button>
+      <button class="nav-link" data-page="surprise"><span>✧</span> Surprise ideas</button>
+      <div class="sidebar-bottom">
+        <div class="mini-profile"><div class="avatar" id="sideAvatar">S</div><div><b id="sideName">Your profile</b><small id="sideEmail">Make it personal</small></div><button id="editProfile" title="Edit profile">⚙</button></div>
+        <p class="privacy-note">♡ Your memories stay on this device.</p>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar"><div><span class="eyebrow" id="todayLabel">YOUR LITTLE SPACE</span><h1 id="pageTitle">Make every date meaningful.</h1></div><button class="profile-pill" id="profileButton"><span class="avatar small" id="topAvatar">S</span><span id="topName">Your profile</span><span>⌄</span></button></header>
+
+      <section class="page active" id="page-home">
+        <div class="hero">
+          <div class="hero-copy"><span class="pill light">A little reminder, a lot of love</span><h2>Never miss a<br><em>moment that matters.</em></h2><p>Keep special dates close, plan thoughtful surprises, and make time for the people you love.</p><button class="button primary" data-go="dates">＋ Add a special date</button></div>
+          <div class="hero-art"><div class="sun"></div><div class="gift gift-back">✦</div><div class="gift"><span>♡</span></div><div class="spark s1">✦</div><div class="spark s2">✧</div><div class="art-caption">little things<br>mean everything</div></div>
+        </div>
+        <div class="stats-grid"><article class="stat-card"><span class="stat-icon pink">♡</span><span class="stat-number" id="statDates">0</span><span class="stat-label">Special dates saved</span></article><article class="stat-card"><span class="stat-icon yellow">◷</span><span class="stat-number" id="statUpcoming">0</span><span class="stat-label">Coming up soon</span></article><article class="stat-card"><span class="stat-icon lilac">✧</span><span class="stat-number" id="statTasks">0</span><span class="stat-label">Plans to remember</span></article></div>
+        <div class="section-heading"><div><span class="eyebrow">DON'T LET IT SLIP BY</span><h2>Coming up next</h2></div><button class="text-button" data-go="dates">See all dates ↗</button></div>
+        <div class="content-grid"><div class="panel"><div id="upcomingList" class="stack-list"></div><div id="emptyDates" class="empty-state"><span>♡</span><b>Your first memory starts here</b><p>Add a birthday or special date to see it here.</p><button class="button secondary" data-go="dates">Add a date</button></div></div>
+        <div class="panel quote-panel"><div class="quote-symbol">“</div><p>It's not about the big things. It's about remembering the little things that make someone feel loved.</p><span>— A Ninaivugal reminder</span><button class="button soft" data-go="surprise">Find a thoughtful surprise ✧</button></div></div>
+      </section>
+
+      <section class="page" id="page-dates">
+        <div class="section-heading"><div><span class="eyebrow">KEEP THEM CLOSE</span><h2>Your special dates</h2><p class="muted">Birthdays, anniversaries, and all the dates worth remembering.</p></div><button class="button primary" id="showDateForm">＋ Add date</button></div>
+        <form id="dateForm" class="form-card hidden"><h3 id="dateFormTitle">Add a special date</h3><input type="hidden" id="dateId"><div class="form-grid"><label>Person or occasion<input id="dateTitle" required placeholder="e.g. Maria's birthday"></label><label>Type<select id="dateType"><option>Birthday</option><option>Anniversary</option><option>Friendship</option><option>Personal</option><option>Other</option></select></label><label>Date<input id="dateValue" type="date" required></label><label>Reminder<input id="dateReminder" type="number" min="0" max="30" value="1"> <small class="muted">days before</small></label></div><label>Notes (optional)<textarea id="dateNotes" rows="2" placeholder="Gift ideas, favourite things, little details..."></textarea></label><div class="form-actions"><button type="button" class="button ghost" id="cancelDate">Cancel</button><button class="button primary" type="submit">Save date ♡</button></div></form>
+        <div id="allDates" class="date-grid"></div><div id="datesEmpty" class="empty-state"><span>✧</span><b>No dates yet</b><p>Save the important dates so you can show up for the people you love.</p></div>
+      </section>
+
+      <section class="page" id="page-schedule">
+        <div class="section-heading"><div><span class="eyebrow">MAKE TIME FOR IT</span><h2>Your schedule</h2><p class="muted">Small plans, remembered at the right time.</p></div><button class="button primary" id="showTaskForm">＋ Add a plan</button></div>
+        <form id="taskForm" class="form-card hidden"><h3>Add a reminder</h3><label>What do you need to do?<input id="taskTitle" required placeholder="e.g. Order birthday flowers"></label><div class="form-grid"><label>Date<input id="taskDate" type="date" required></label><label>Time<input id="taskTime" type="time" required></label></div><label>Reminder note (optional)<input id="taskNote" placeholder="e.g. Choose pink roses"></label><div class="form-actions"><button type="button" class="button ghost" id="cancelTask">Cancel</button><button class="button primary" type="submit">Save plan ◷</button></div></form>
+        <div class="notice"><span>🔔</span><div><b>Allow notifications</b><p>Browser reminders work while this page is open. For reliable reminders when the app is closed, a deployed app needs push notifications and a backend.</p></div><button class="button soft" id="enableNotifications">Enable</button></div>
+        <div id="taskList" class="task-list"></div><div id="tasksEmpty" class="empty-state"><span>◷</span><b>A little plan goes a long way</b><p>Add a task with a date and time to get started.</p></div>
+      </section>
+
+      <section class="page" id="page-surprise">
+        <div class="surprise-hero"><span class="pill light">YOUR THOUGHTFUL SIDEKICK</span><h2>Let's make someone<br><em>feel extra special.</em></h2><p>Tell us a little about them. We'll help you think of a surprise they'll love.</p></div>
+        <div class="chat-layout"><div class="chat-panel"><div class="chat-head"><div class="bot-avatar">✧</div><div><b>Ninaivugal Ideas</b><small><span class="online-dot"></span> Your surprise brainstorming buddy</small></div><button id="clearChat" class="icon-button" title="Clear chat">↻</button></div><div class="chat-messages" id="chatMessages"><div class="message bot">Hey there! ♡ Who are we making smile today? Tell me the occasion, their interests, and your budget — let's dream up something lovely.</div></div><div class="suggestions"><button data-prompt="Suggest a birthday surprise under ₹500">Birthday under ₹500</button><button data-prompt="Give me a thoughtful handmade gift idea">Handmade gift</button><button data-prompt="Plan a surprise for my best friend">Best friend surprise</button></div><form id="chatForm" class="chat-input"><input id="chatInput" placeholder="Tell me about your person..." autocomplete="off"><button class="send-button" aria-label="Send message">➤</button></form><small class="chat-disclaimer">Starter suggestions are generated locally. Connect an AI API for real AI chat.</small></div><aside class="tip-card"><span class="tip-icon">♡</span><h3>The best gifts feel personal.</h3><p>A favourite snack, a shared memory, or a handwritten note can mean more than an expensive present.</p><div class="tip-divider"></div><b>Try including</b><ul><li>Their hobbies</li><li>Your budget</li><li>Time you have to prepare</li></ul></aside></div>
+      </section>
+
+      <section class="page" id="page-profile">
+        <div class="section-heading"><div><span class="eyebrow">YOUR SPACE, YOUR WAY</span><h2>Your profile</h2><p class="muted">Keep your details up to date.</p></div></div>
+        <form id="profileForm" class="form-card profile-form"><div class="profile-large" id="profileAvatar">S</div><label>Your name<input id="profileName" required placeholder="Your name"></label><label>Email address<input id="profileEmail" type="email" placeholder="you@example.com"></label><label>About you<textarea id="profileAbout" rows="3" placeholder="What makes your celebrations special?"></textarea></label><div class="privacy-note">This starter version stores data in this browser on this device. It does not create a real online account.</div><div class="form-actions"><button class="button primary">Save profile ♡</button></div></form>
+      </section>
+      <footer>Made with ♡ for the moments that matter <span>·</span> Ninaivugal</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
